@@ -29,7 +29,7 @@ public class CannonBallBehaviour : MonoBehaviour
         if(Input.anyKeyDown)
         {
             rigidbody.isKinematic = false;
-            rigidbody.AddForce(transform.forward * forceOnFire,ForceMode.Impulse);
+            rigidbody.AddForce(transform.forward * forceOnFire);
             _canFire = false;
         }
     }
