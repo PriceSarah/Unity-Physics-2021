@@ -36,6 +36,12 @@ public class RagdollBehaviour : MonoBehaviour
             r.isKinematic = true;
         }
         _controller = GetComponent<CharacterController>();
+        //RaycastHit ray = new RaycastHit();
+        //if(Physics.Raycast(transform.position, transform.forward, out ray)
+        //{
+        //    ray.collider.gameObject
+        //}
+
     }
 
     // Update is called once per frame

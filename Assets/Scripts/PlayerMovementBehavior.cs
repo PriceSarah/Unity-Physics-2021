@@ -12,11 +12,19 @@ public class PlayerMovementBehavior : MonoBehaviour
     public float speed = 1.0f;
     public float turnRate = 1.0f;
     public float pushPower = 2.0f;
+    public float gravity = 10.0f;
+    private Vector3 _verticalVelocity = Vector3.zero;
+    private bool _isGrounded = true;
+    public float jumpForce = 1;
+
 
     public bool tankControls = true;
 
-    // Start is called before the first frame update
-    void Start()
+        // Use this for initialization
+    
+
+        // Start is called before the first frame update
+        void Start()
     {
         _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
@@ -40,6 +48,19 @@ public class PlayerMovementBehavior : MonoBehaviour
             if (desiredMovement.magnitude > 0)
                 transform.forward = desiredMovement.normalized;
         }
+
+        if (Input.GetButtonDown("Jump") && _isGrounded)
+        {
+            _verticalVelocity.y = jumpForce;
+            _animator.SetBool("Jump", true);
+        }
+        else
+        {
+            _animator.SetBool("Jump", false);
+        }
+
+        _verticalVelocity.y -= gravity * Time.deltaTime;
+        _controller.Move(_verticalVelocity * Time.deltaTime);
         //Animate based on movement
         _animator.SetFloat("Speed", desiredMovement.z * speed);
     }
