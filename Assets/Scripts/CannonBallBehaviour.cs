@@ -6,30 +6,23 @@ public class CannonBallBehaviour : MonoBehaviour
 {
     public float forceOnFire = 300;
 
-    private bool _fire = false;
     private bool _canFire = true;
 
-    private Rigidbody rigidbody = null;
+    private Rigidbody _rigidbody = null;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.isKinematic = true;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.isKinematic = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown)
+        if (Input.GetKey(KeyCode.F) && _canFire)
         {
-            rigidbody.isKinematic = false;
-            rigidbody.AddForce(transform.forward * forceOnFire);
+            _rigidbody.isKinematic = false;
+            _rigidbody.AddForce(transform.forward * forceOnFire);
             _canFire = false;
         }
     }
