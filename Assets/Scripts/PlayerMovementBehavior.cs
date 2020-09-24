@@ -65,6 +65,7 @@ public class PlayerMovementBehavior : MonoBehaviour
         _animator.SetFloat("Speed", desiredMovement.z * speed);
     }
 
+    
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody otherRB = hit.rigidbody;
