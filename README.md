@@ -1,7 +1,9 @@
 # Unity-Physics-2021
 
 WASD to move
+
 F to fire the cannonball
+
 Left mouse in the ballpit to make the balls change color
 
 There are different areas where the player can see physics in action
